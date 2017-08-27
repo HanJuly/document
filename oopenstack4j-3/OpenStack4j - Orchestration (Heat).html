@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.openstack4j.com/learn/orchestration -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="msvalidate.01" content="7241C7220434CF221FAA89EEBBCA488F">
+    
+    <title>OpenStack4j - Orchestration (Heat)</title>
+    <meta name="description" content="OpenStack4j is a fluent Java OpenStack client SDK which allows provisioning and control of an OpenStack deployment.">
+    <meta name="author" content="Jeremy Unruh">
+    <meta name="keywords" content="OpenStack, Java, SDK, Orchestration Java, Pacesys, Fluent, Compute, Identity, Network, Image, Maangement">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles and icons -->
+	<!--
+	    <link rel="stylesheet" href="/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+	-->
+    <link href="./OpenStack4j - Orchestration (Heat)_files/bootstrap.min.css" rel="stylesheet">
+	<link href="./OpenStack4j - Orchestration (Heat)_files/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./OpenStack4j - Orchestration (Heat)_files/prettify.css">
+    <link rel="stylesheet" href="./OpenStack4j - Orchestration (Heat)_files/css.css">
+    <link rel="shortcut icon" href="http://www.openstack4j.com/assets/img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <script type="text/javascript" async="" src="./OpenStack4j - Orchestration (Heat)_files/linkid.js.下载"></script><script async="" src="./OpenStack4j - Orchestration (Heat)_files/analytics.js.下载"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49467301-1', 'openstack4j.com');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+</script></head>
+
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <div id="wrapper">
+      <div id="wrapper-inner">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="nav-collapse">
+            <ul id="navlist" class="nav navbar-nav">
+              <li id="navindex"><a href="http://www.openstack4j.com/">Home</a></li>
+              <li class="active"><a href="http://www.openstack4j.com/learn">Docs</a></li>
+              <li><a href="http://www.openstack4j.com/javadoc/" target="_blank">JavaDoc</a></li>
+              <li><a href="https://github.com/ContainX/openstack4j/issues" target="_blank">Issues</a></li>
+            </ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://github.com/ContainX/openstack4j" target="_blank" title="Fork OS4j on GitHub"><i class="fa fa-github fa-2x"></i></a></li>
+			    <li><a href="http://twitter.com/openstack4j" target="_blank" title="Follow OS4j on Twitter"><i class="fa fa-twitter fa-2x"></i></a></li>
+			    <li><a href="https://www.linkedin.com/in/jeremyunruh1" target="_blank" title="Add me on Linked"><i class="fa fa-linkedin fa-2x"></i></a></li>
+
+				<li><a href="http://groups.google.com/group/openstack4j" target="_blank" title="Questions? Visit our Google Group"><i class="fa fa-comment fa-2x"></i></a></li>
+
+				<li><p class="version-tag"><span style="color:#08c">REL:</span> 3.0.3 | <span style="color:#08c">DEV:</span> 3.0.4-SNAPSHOT</p></li>
+			</ul>
+			</div>
+		  </div>
+
+        </div>
+    </div>
+
+		<div class="pagecrumb-pre">
+<div class="jumbotron mainheader pagecrumb">
+	 <div class="container">
+		
+			<h2 class="pagecrumb-text">OpenStack4j <small>&gt; Documentation / Orchestration (Heat)</small></h2>
+		
+     </div>
+</div>
+</div>
+        <div class="container">
+          <div id="docs" class="row affix-row">
+            <div class="col-md-3 navbar-full">
+	<div class="affix-sidebar">
+		<h4><span class="label label-primary">General</span></h4>
+		<ul class="sidenav">
+			
+			<li>
+				<a href="http://www.openstack4j.com/learn">What is OpenStack4j</a>
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/getting-started">Getting Started</a>
+			</li>
+			
+		</ul>
+		<h4><span class="label label-danger">OpenStack Services</span></h4>
+		<ul class="sidenav">
+			<li>
+				<a href="http://www.openstack4j.com/learn/identity/identity-v2">Identity (Keystone) V2</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/identity/identity-v3">Identity (Keystone) V3</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/compute">Compute (Nova)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/network">Network (Neutron)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/image">Images (Glance)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/image-v2">Images (Glance) V2</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/blockstorage">Block Storage (Cinder)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/objectstorage">Object Storage (Swift)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/telemetry">Telemetry (Ceilometer)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/orchestration">Orchestration (Heat)</a>
+				
+				<ul>
+					<li>
+						<a href="http://www.openstack4j.com/learn/orchestration/#stacks">Stacks</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/orchestration/#templates">Templates</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/orchestration/#resources">Resources</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/orchestration/#events">Events</a>
+					</li>
+				</ul>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/data-processing">Data Processing (Sahara)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/trove">Database as a Service (Trove)</a>
+			</li>	
+			<li>
+				<a href="http://www.openstack4j.com/learn/magnum">Magnum</a>
+					
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/dns-v2">DNS (Designate) V2</a>
+				
+			</li>
+			
+		</ul>
+	</div>
+</div>
+
+            <div class="col-md-9">
+              <div id="content" class="affix-content">
+              <h1 id="orchestration-heat">Orchestration (Heat)</h1>
+
+<p>Orchestration (Heat) is a service that you can use to orchestrate multiple composite cloud applications. Using OpenStack4j you can control Stacks, Templates, Resources and Events.</p>
+
+<h2 id="stacks">Stacks</h2>
+
+<p>A stack is a model that holds a template, parameters and other meta data related to it’s purpose.  See some of the examples below on common stack usages found within the API.</p>
+
+<h4 id="creating-a-stack">Creating a Stack</h4>
+
+<p>To create and launch a stack see the example below:</p>
+
+<p><strong>Using a Builder</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>Stack stack = os.heat().stacks().create(Builders.stack()
+                                          .name("Stack Name")
+                                          .jsonTemplate(template)
+                                          .parameters(params)
+                                          .timeoutMins(5).build());
+</code></pre>
+</div>
+
+<p><strong>Calling with arguments</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>Stack stack = os.heat().stacks().create(name, template, params, disableRollback, timeoutMins);
+</code></pre>
+</div>
+
+<h4 id="deleting-a-stack">Deleting a Stack</h4>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>os.heat().stacks().delete(stackName, id);
+</code></pre>
+</div>
+
+<h4 id="finding-details-about-a-stack">Finding details about a Stack</h4>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>Stack stack = os.heat().stacks().getDetails(stackName, id);
+</code></pre>
+</div>
+
+<h4 id="list-available-stacks">List available Stacks</h4>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>List&lt;? extends Stack&gt; stacks = os.heat().stacks().list();
+</code></pre>
+</div>
+
+<h2 id="templates">Templates</h2>
+
+<p>OpenStack4j supports template validation which allows you to test acceptance when creating a stack.</p>
+
+<h4 id="template-validation">Template Validation</h4>
+
+<p>There are two ways to validate a template.  You can validate the template in String form or as a Template object.</p>
+
+<p><strong>Input as a String</strong></p>
+
+<p class="prettyprint lang-java">String result = os.heat().templates().validateTemplate(templateString);</p>
+
+<p><strong>Input as a Template</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>String result = os.heat().templates().validateTemplate(template);
+</code></pre>
+</div>
+
+<h2 id="resources">Resources</h2>
+
+<p>Below are methods for finding resources associated with Stacks</p>
+
+<h4 id="finding-a-resource">Finding a Resource</h4>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>Resource resource = os.heat().resources().show(stackName, id, resourceName);
+</code></pre>
+</div>
+
+<h4 id="listing-resources-for-a-given-stack">Listing Resources for a Given Stack</h4>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>List&lt;? extends Resource&gt; resources = os.heat().resources().list(stackName, id);
+</code></pre>
+</div>
+
+<h2 id="events">Events</h2>
+
+<p>Events are useful for detecting errors or deployment problems within a Stack. Below are examples of the events API for Heat services.</p>
+
+<h4 id="listing-events-for-a-stack">Listing Events for a Stack</h4>
+
+<p><strong>All Events for a Stack</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>List&lt;? extends Event&gt; events = os.heat().events().list(stackName, id);
+</code></pre>
+</div>
+
+<p><strong>All Events for a Stack and corresponding Resource</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>List&lt;? extends Event&gt; events = os.heat().events().list(stackName, id, resourceName);
+</code></pre>
+</div>
+
+<h4 id="looking-up-an-event">Looking up an Event</h4>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>Event event = os.heat().events().show(stackName, id, resourceName, eventId);
+</code></pre>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+            <footer id="footer" class="footer">
+      <div class="container" height="100%">
+        <p>Copyright 2016 <a href="https://github.com/ContainX">ContainX / OpenStack4j</a>. Licensed under the <a href="http://opensource.org/licenses/Apache-2.0" target="_blank">Apache 2.0 License</a>.<a href="https://github.com/gondor/openstack4j" target="_blank" title="Fork Me on GitHub">
+	&nbsp;<i class="fa fa-github fa-2x"></i></a>
+			    <a href="http://twitter.com/openstack4j" target="_blank" title="Follow us on Twitter"><i class="fa fa-twitter fa-2x"></i></a>
+				<a href="http://groups.google.com/group/openstack4j" target="_blank" title="Questions? Visit our Google Group"><i class="fa fa-comment fa-2x"></i></a>
+</p>
+      </div>
+    </footer>
+
+      </div>
+    
+
+	   <script src="./OpenStack4j - Orchestration (Heat)_files/jquery-1.11.1.min.js.下载"></script>
+	<!--
+	    <script src="/assets/js/jquery.min.js"></script>
+	    <script src="/assets/js/bootstrap.min.js"></script>
+	-->
+	<script src="./OpenStack4j - Orchestration (Heat)_files/bootstrap.min.js.下载"></script>
+    <script src="./OpenStack4j - Orchestration (Heat)_files/prettify.js.下载"></script>
+    <script src="./OpenStack4j - Orchestration (Heat)_files/application.js.下载"></script>
+  
+</body></html>
