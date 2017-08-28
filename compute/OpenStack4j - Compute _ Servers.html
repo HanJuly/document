@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.openstack4j.com/learn/compute/servers/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="msvalidate.01" content="7241C7220434CF221FAA89EEBBCA488F">
+    
+    <title>OpenStack4j - Compute / Servers</title>
+    <meta name="description" content="OpenStack4j is a fluent Java OpenStack client SDK which allows provisioning and control of an OpenStack deployment.">
+    <meta name="author" content="Jeremy Unruh">
+    <meta name="keywords" content="OpenStack, Java, SDK, Orchestration Java, Pacesys, Fluent, Compute, Identity, Network, Image, Maangement">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles and icons -->
+	<!--
+	    <link rel="stylesheet" href="/css/bootstrap.min.css">
+	    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+	-->
+    <link href="./OpenStack4j - Compute _ Servers_files/bootstrap.min.css" rel="stylesheet">
+	<link href="./OpenStack4j - Compute _ Servers_files/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./OpenStack4j - Compute _ Servers_files/prettify.css">
+    <link rel="stylesheet" href="./OpenStack4j - Compute _ Servers_files/css.css">
+    <link rel="shortcut icon" href="http://www.openstack4j.com/assets/img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <script type="text/javascript" async="" src="./OpenStack4j - Compute _ Servers_files/linkid.js.下载"></script><script async="" src="./OpenStack4j - Compute _ Servers_files/analytics.js.下载"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49467301-1', 'openstack4j.com');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+</script></head>
+
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <div id="wrapper">
+      <div id="wrapper-inner">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="nav-collapse">
+            <ul id="navlist" class="nav navbar-nav">
+              <li id="navindex"><a href="http://www.openstack4j.com/">Home</a></li>
+              <li class="active"><a href="http://www.openstack4j.com/learn">Docs</a></li>
+              <li><a href="http://www.openstack4j.com/javadoc/" target="_blank">JavaDoc</a></li>
+              <li><a href="https://github.com/ContainX/openstack4j/issues" target="_blank">Issues</a></li>
+            </ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://github.com/ContainX/openstack4j" target="_blank" title="Fork OS4j on GitHub"><i class="fa fa-github fa-2x"></i></a></li>
+			    <li><a href="http://twitter.com/openstack4j" target="_blank" title="Follow OS4j on Twitter"><i class="fa fa-twitter fa-2x"></i></a></li>
+			    <li><a href="https://www.linkedin.com/in/jeremyunruh1" target="_blank" title="Add me on Linked"><i class="fa fa-linkedin fa-2x"></i></a></li>
+
+				<li><a href="http://groups.google.com/group/openstack4j" target="_blank" title="Questions? Visit our Google Group"><i class="fa fa-comment fa-2x"></i></a></li>
+
+				<li><p class="version-tag"><span style="color:#08c">REL:</span> 3.0.3 | <span style="color:#08c">DEV:</span> 3.0.4-SNAPSHOT</p></li>
+			</ul>
+			</div>
+		  </div>
+
+        </div>
+    </div>
+
+		<div class="pagecrumb-pre">
+<div class="jumbotron mainheader pagecrumb">
+	 <div class="container">
+		
+			<h2 class="pagecrumb-text">OpenStack4j <small>&gt; Documentation / Compute / Servers</small></h2>
+		
+     </div>
+</div>
+</div>
+        <div class="container">
+          <div id="docs" class="row affix-row">
+            <div class="col-md-3 navbar-full">
+	<div class="affix-sidebar">
+		<h4><span class="label label-primary">General</span></h4>
+		<ul class="sidenav">
+			
+			<li>
+				<a href="http://www.openstack4j.com/learn">What is OpenStack4j</a>
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/getting-started">Getting Started</a>
+			</li>
+			
+		</ul>
+		<h4><span class="label label-danger">OpenStack Services</span></h4>
+		<ul class="sidenav">
+			<li>
+				<a href="http://www.openstack4j.com/learn/identity/identity-v2">Identity (Keystone) V2</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/identity/identity-v3">Identity (Keystone) V3</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/compute">Compute (Nova)</a>
+				
+				<ul>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/#flavors">Flavors</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/#images-via-nova">Images</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/servers/">Servers</a>
+						
+						<ul>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#boot-a-server-vm-create">Create (Boot)</a>
+							</li>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#server-actions">Actions</a>
+							</li>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#create-a-new-server-snapshot">Snapshots</a>
+							</li>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#floating-ip-addresses">Floating IP Addresses</a>
+							</li>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#metadata">Metadata</a>
+							</li>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#vnc-and-console-output">VNC &amp; Console Output</a>
+							</li>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#diagnostics">Diagnostics</a>
+							</li>
+							<li>
+								<a href="http://www.openstack4j.com/learn/compute/servers/#querying-for-servers">Queries and Updates</a>
+							</li>
+						</ul>
+						
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/keypairs">Keypairs</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/sgrules">Security Groups and Rules</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/#quota-sets-and-limits">Quota-Sets and Limits</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/#simple-tenant-usage-os-simple-tenant-usage">Simple Tenant Usage</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/floatingipdns">Floating IP DNS</a>
+					</li>
+					<li>
+						<a href="http://www.openstack4j.com/learn/compute/#extensions">Extensions</a>
+					</li>
+				</ul>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/network">Network (Neutron)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/image">Images (Glance)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/image-v2">Images (Glance) V2</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/blockstorage">Block Storage (Cinder)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/objectstorage">Object Storage (Swift)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/telemetry">Telemetry (Ceilometer)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/orchestration">Orchestration (Heat)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/data-processing">Data Processing (Sahara)</a>
+				
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/trove">Database as a Service (Trove)</a>
+			</li>	
+			<li>
+				<a href="http://www.openstack4j.com/learn/magnum">Magnum</a>
+					
+			</li>
+			<li>
+				<a href="http://www.openstack4j.com/learn/dns-v2">DNS (Designate) V2</a>
+				
+			</li>
+			
+		</ul>
+	</div>
+</div>
+
+            <div class="col-md-9">
+              <div id="content" class="affix-content">
+              <h1 id="servers">Servers</h1>
+
+<p>A server is a running VM instance.  The OpenStack4j supports all major server based operations and actions.  The examples below will cover all the major scenarios that are commonly utilized to manage running servers within the cloud.</p>
+
+<h3 id="boot-a-server-vm-create">Boot a Server VM (Create)</h3>
+
+<p>Booting a new Server is simple with OpenStack4j.  The two requirements are specifying a <a href="http://www.openstack4j.com/learn/compute/servers/#flavors">flavor</a> and an <a href="http://www.openstack4j.com/learn/compute/servers/#images-via-nova">image</a>.</p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>// Create a Server Model Object
+ServerCreate sc = Builders.server().name("Ubuntu 2").flavor("flavorId").image("imageId").build();
+
+// Boot the Server
+Server server = os.compute().servers().boot(sc);
+</code></pre>
+</div>
+
+<p><strong>Personalities</strong></p>
+
+<p>When you create a new VM/Server you can also override various files or lay down additional files that will be available when the VM is running.  For example you may want to override the <code class="highlighter-rouge">/etc/passwd</code> file with a default set of users and passwords. Below takes the example above but overrides the <code class="highlighter-rouge">/etc/motd</code></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>// Create a Server Model Object
+ServerCreate sc = Builders.server()
+                          .name("Ubuntu 2")
+                          .flavor("flavorId")
+                          .image("imageId")
+                          .addPersonality("/etc/motd", "Welcome to the new VM! Restricted access only")
+                          .build();
+
+// Boot the Server
+Server server = os.compute().servers().boot(sc);
+</code></pre>
+</div>
+
+<p><strong>Booting from an existing Volume vs Image</strong></p>
+
+<p>When creating a server you typically boot from an Image to install the operating system.  There are other scenarios where you may have a volume that you would like attached to the new server and have the boot process use that volume.  See the example below:</p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>BlockDeviceMappingBuilder blockDeviceMappingBuilder = Builders.blockDeviceMapping() 
+                                                              .uuid(volumeId)
+                                                              .deviceName("/dev/vda")
+                                                              .bootIndex(0);
+
+ServerCreate sc = Builders.server().name("Server").blockDevice(blockDeviceMappingBuilder.build());
+Server server = os.compute().servers().boot(sc);
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The device name unfortunatelly matters, and even worse - it depends on the hypervisor you use. In our experience - for KVM it is /dev/vda, for Xen it is /dev/xvda.</p>
+
+<h3 id="server-actions">Server Actions</h3>
+
+<p>Server actions provide realtime management of a live server.</p>
+
+<p><strong>Simple Actions</strong></p>
+
+<p>Simple Server Actions are a single command giving the Server ID and desired action.</p>
+
+<table class="table table-striped">
+<tbody><tr><td><strong>PAUSE</strong></td><td>Pause the server</td></tr>
+<tr><td><strong>UNPAUSE</strong></td><td>Un-Pause the server</td></tr>
+<tr><td><strong>STOP</strong></td><td>Stop the server</td></tr>
+<tr><td><strong>START</strong></td><td>Start the server</td></tr>
+<tr><td><strong>LOCK</strong></td><td>Lock the server</td></tr>
+<tr><td><strong>UNLOCK</strong></td><td>Unlock a locked server</td></tr>
+<tr><td><strong>SUSPEND</strong></td><td>Suspend the server</td></tr>
+<tr><td><strong>RESUME</strong></td><td>Resume a suspended server</td></tr>
+<tr><td><strong>RESCUE</strong></td><td>Rescue the server</td></tr>
+<tr><td><strong>UNRESCUE</strong></td><td>Un-Rescue the server</td></tr>
+<tr><td><strong>SHELVE</strong></td><td>Shelve the server</td></tr>
+<tr><td><strong>SHELVE_OFFLOAD</strong></td><td>Remove a shelved instance from the compute node</td></tr>
+<tr><td><strong>UNSHELVE</strong></td><td>Un-Shelve the server</td></tr>
+</tbody></table>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>// Suspend a Server
+os.compute().servers().action(server.getId(), Action.SUSPEND);
+
+// Resume a Server
+os.compute().servers().action(server.getId(), Action.RESUME);
+</code></pre>
+</div>
+
+<p><strong>Extended Actions</strong></p>
+
+<p class="prettyprint lang-java">Reboot a Server</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>os.compute().servers().reboot(server.getId(), RebootType.SOFT);
+</code></pre>
+</div>
+
+<p class="prettyprint lang-java">Resize a Server</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>os.compute().servers().resize(server.getId(), newFlavor.getId());
+</code></pre>
+</div>
+
+<p class="prettyprint lang-java">Confirm a Resize</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>os.compute().servers().confirmResize(server.getId());
+</code></pre>
+</div>
+
+<p class="prettyprint lang-java">Revert a Resize</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>os.compute().servers().revertResize(server.getId());
+</code></pre>
+</div>
+
+<h3 id="create-a-new-server-snapshot">Create a new Server Snapshot</h3>
+
+<p>A snapshot is merely a pointer to a point in time.  This can be handy if you are doing a risky upgrade or migration and need a quick way to revert back.  You can take a snapshot and then proceed with your migrations.  If the migrations fail you can quickly revert back to created snapshot.</p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>String imageId = os.compute().servers().createSnapshot(server.getId(), "Clean State Snapshot");
+</code></pre>
+</div>
+
+<h3 id="floating-ip-addresses">Floating IP Addresses</h3>
+
+<p>A floating Ip address is an address that is part of a pool.  Compute allows you to allocate or deallocate address from a pool against a server instance.  Below are the operational examples for floating ip addresses.</p>
+
+<p><strong>Getting a List of available Pool Names</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>List&lt;String&gt; pools = os.compute().floatingIps().getPoolNames();
+</code></pre>
+</div>
+
+<p><strong>List floating IP addresses</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>List&lt;FloatingIP&gt; ips = os.compute().floatingIps().list();
+</code></pre>
+</div>
+
+<p><strong>Allocate a floating IP address from a pool</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>FloatingIP ip = os.compute().floatingIps().allocateIP("pool");
+</code></pre>
+</div>
+
+<p><strong>Deallocate a floating IP address</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>os.compute().floatingIps().deallocateIP("floatingIp_id");
+</code></pre>
+</div>
+
+<p><strong>Add a floating IP address to a server</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>ActionResponse r = os.compute().floatingIps().addFloatingIP(server, "192.168.0.250", "50.50.2.3");
+</code></pre>
+</div>
+
+<p><strong>Add a floating IP address to a server if Neutron is installed</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>NetFloatingIP netFloatingIP = os.networking().floatingip().get(ipId);
+Server server = os.compute().servers().get(serverId);
+ActionResponse = osClient.compute().floatingIps().addFloatingIP(server, netFloatingIP.getFloatingIpAddress());	
+</code></pre>
+</div>
+
+<p><strong>Remove a floating IP address from a server</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>ActionResponse r = os.compute().floatingIps().removeFloatingIP(server, "50.50.2.3");
+</code></pre>
+</div>
+
+<h3 id="metadata">Metadata</h3>
+
+<p><strong>Creating Metadata during Create</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code> // Can fluently add adhoc items
+ ServerCreate sc = Builders.server()
+                              .image("0f4a93c6-a08c-4cf3-9fec-abe968f06892")
+                              .addMetadataItem("Group", "MyGroup")
+                              .addMetadataItem("Serial", "232432")
+                              .name("Test Server")
+                              .build();
+
+ // Or set the actual Map 
+ ServerCreate sc = Builders.server()
+                              .image("0f4a93c6-a08c-4cf3-9fec-abe968f06892")
+                              .addMetadata(someMap)
+                              .name("Test")
+                              .build();
+</code></pre>
+</div>
+
+<p><strong>Management Examples</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>// Grabbing just the Metadata
+Map&lt;String, String&gt; md = os.compute().servers().getMetadata(serverId);
+
+// Updating or Replace metadata items
+Map&lt;String, String&gt; md = os.compute().servers().updateMetadata(serverId, inboundMapofMD);
+
+// Remove a Metadata item
+os.compute().servers().deleteMetadataItem(serverId, metadataKey);
+</code></pre>
+</div>
+
+<h3 id="vnc-and-console-output">VNC and Console Output</h3>
+
+<p>OpenStack provides the ability to grab the tail of the console log based on the specified <code class="highlighter-rouge">number of lines</code>. See the example below on grabbing the last 50 lines of a running servers console.</p>
+
+<p><strong>Console Output</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>String consoleOutput = os.compute().servers().getConsoleOutput("serverId", 50);
+</code></pre>
+</div>
+
+<p>You can also grab the VNC connection URL based on two VNC types that OpenStack offers, <code class="highlighter-rouge">novnc</code> and <code class="highlighter-rouge">xvpvnc</code>.  See the example below on obtaining the connection information for VNC.  The returned class contains the request <code class="highlighter-rouge">type</code> and the <code class="highlighter-rouge">url</code> used to connect.</p>
+
+<p><strong>VNC Console</strong></p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>VNCConsole console = os.compute().servers().getVNCConsole("serverId", Type.NOVNC);
+</code></pre>
+</div>
+
+<h3 id="diagnostics">Diagnostics</h3>
+
+<p>Diagnostics are usage information about the server. Usage includes CPU, Memory and IO. Information is dependent on the hypervisor used by the OpenStack installation. As of right now there is no concrete diagnostic specification which is why the information is variable and in map form (key and value)</p>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>Map&lt;String, ? extends Number&gt; diagnostics = os.compute().servers().diagnostics("serverId");
+</code></pre>
+</div>
+
+<h3 id="querying-for-servers">Querying for Servers</h3>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>// List all Servers
+List&lt;? extends Server&gt; servers = os.compute().servers().list();
+
+// List all servers (light) ID, Name and Links populated
+List&lt;? extends Server&gt; servers = os.compute().servers().list(false);
+
+// Get a specific Server by ID
+Server server = os.compute().servers().get("serverId");
+</code></pre>
+</div>
+
+<h3 id="delete-a-server">Delete a Server</h3>
+
+<div class="prettyprint lang-java highlighter-rouge"><pre class="highlight"><code>os.compute().servers().delete("serverId");
+</code></pre>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+            <footer id="footer" class="footer">
+      <div class="container" height="100%">
+        <p>Copyright 2016 <a href="https://github.com/ContainX">ContainX / OpenStack4j</a>. Licensed under the <a href="http://opensource.org/licenses/Apache-2.0" target="_blank">Apache 2.0 License</a>.<a href="https://github.com/gondor/openstack4j" target="_blank" title="Fork Me on GitHub">
+	&nbsp;<i class="fa fa-github fa-2x"></i></a>
+			    <a href="http://twitter.com/openstack4j" target="_blank" title="Follow us on Twitter"><i class="fa fa-twitter fa-2x"></i></a>
+				<a href="http://groups.google.com/group/openstack4j" target="_blank" title="Questions? Visit our Google Group"><i class="fa fa-comment fa-2x"></i></a>
+</p>
+      </div>
+    </footer>
+
+      </div>
+    
+
+	   <script src="./OpenStack4j - Compute _ Servers_files/jquery-1.11.1.min.js.下载"></script>
+	<!--
+	    <script src="/assets/js/jquery.min.js"></script>
+	    <script src="/assets/js/bootstrap.min.js"></script>
+	-->
+	<script src="./OpenStack4j - Compute _ Servers_files/bootstrap.min.js.下载"></script>
+    <script src="./OpenStack4j - Compute _ Servers_files/prettify.js.下载"></script>
+    <script src="./OpenStack4j - Compute _ Servers_files/application.js.下载"></script>
+  
+</body></html>
